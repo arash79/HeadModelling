@@ -1,0 +1,17 @@
+PATHs:
+
+  FieldTrip_PATH: 'C:\\Users\\User\\Documents\\MATLAB\\fieldtrip-20220707'
+  FieldTrip_RESULTS_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\results\\FieldTrip'
+  RESULTS_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\results'
+  INV2_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\data\\INV2.nii'
+  T1w_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\data\\T1w.nii'
+  EXTRACTED_INV2_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\data\\eINV2.nii'
+  EXTRACTED_T1w_PATH: 'C:\\Users\\User\\PycharmProjects\\HeadModelling\\data\\eT1w.nii'
+
+PARAMETERs:
+
+  region_growing_threshold: 0.8
+  drop_intensively: True
+  save_as_nifti: True
+  connected_components_minimum_length: 50
+  dismiss_soft_tissue_portion: (6, 2)
