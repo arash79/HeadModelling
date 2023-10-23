@@ -340,7 +340,7 @@ class SegmentArteries:
         mask[extra_voxels == 0] = True  
 
         # calculating the boundaries of the spared area as explained in readme file
-        dismissal_portion = config_file['PARAMETERs']['dismiss_soft_tissue_portion']
+        dismissal_portion = eval(config_file['PARAMETERs']['dismiss_soft_tissue_portion'])
         lower_boundary, upper_boundary = max(dismissal_portion), min(dismissal_portion)
         spared_area_boundaries = (self.shape[2] // lower_boundary, self.shape[2] // upper_boundary)
 
