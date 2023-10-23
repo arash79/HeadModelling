@@ -6,7 +6,7 @@ from rich.console import Console
 import yaml
 
 console = Console()
-
+# loading the configuration file
 with open('config.yaml', 'r', encoding='utf-8-sig') as file:
     config_file = yaml.safe_load(file)
 
@@ -30,11 +30,12 @@ def FieldTrip_Segmentation(nifti_file_path):
               'output': {'tpm'},
               'spmmethod': 'mars'}
 
-    console.log('[red underline]starting matlab engine...')
-    engine = matlab.engine.start_matlab()
+    console.log('[red underline]starting matlab engine...')  
+    engine = matlab.engine.start_matlab()  # starting matlab engine
 
     engine.eval('warning off', nargout=0)  # turn off warnings
 
+    # adding FieldTrip to path
     FieldTrip_PATH = engine.genpath(config_file['PATHs']['FieldTrip_PATH'])
 
     console.log('[bold blue]adding FieldTrip to path...')
@@ -46,11 +47,11 @@ def FieldTrip_Segmentation(nifti_file_path):
     console.log('[bold blue]reading MRI data...')
     file_name = nifti_file_path.split('\\')[-1][:-4]
     affine_transform = nib.load(nifti_file_path).affine
-    MRI = engine.ft_read_mri(nifti_file_path)
+    MRI = engine.ft_read_mri(nifti_file_path)  # reading the MRI data using FieldTrip
     MRI['coordsys'] = 'ras'
 
     console.log('[bold blue]segmenting tissues...')
-    segmented = engine.ft_volumesegment(config, MRI)
+    segmented = engine.ft_volumesegment(config, MRI)  # segmenting the MRI data using FieldTrip 
 
     console.log('[bold blue]Finalizing results...')
     gray_matter = np.array(segmented['gray'])
